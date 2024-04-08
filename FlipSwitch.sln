@@ -13,6 +13,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleWebApplication", "samples\SimpleWebApplication\SimpleWebApplication.csproj", "{4BFE060E-7BFA-4727-8DAA-92DAC718AD95}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{EBF0DEF4-DC58-4A2B-8AE8-C8DA91E00BB8}"
+    ProjectSection(SolutionItems) = preProject
+		docker-compose.yaml = docker-compose.yaml
+		Makefile = Makefile
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
