@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\FlipSwitch\FlipSwitch.csproj" />
+      <ProjectReference Include="..\..\src\FlipSwitch\FlipSwitch.csproj" />
     </ItemGroup>
-
 </Project>

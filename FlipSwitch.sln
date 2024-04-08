@@ -1,18 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlipSwitch", "FlipSwitch\FlipSwitch.csproj", "{7162EAB2-0AA2-4908-9E3E-9C4977C0202D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlipSwitch", "src\FlipSwitch\FlipSwitch.csproj", "{7162EAB2-0AA2-4908-9E3E-9C4977C0202D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlipSwitch.Web", "FlipSwitch.Web\FlipSwitch.Web.csproj", "{0C63EE1F-B693-4713-8F61-52F3D3B80745}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlipSwitch.Web", "src\FlipSwitch.Web\FlipSwitch.Web.csproj", "{0C63EE1F-B693-4713-8F61-52F3D3B80745}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlipSwitch.Common", "FlipSwitch.Common\FlipSwitch.Common.csproj", "{8831267D-0C7B-4E7A-AB02-2AD2B96F56F0}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{8D645990-AC0F-4BFB-85A5-FB5265BD51D0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlipSwitch.Common", "src\FlipSwitch.Common\FlipSwitch.Common.csproj", "{8831267D-0C7B-4E7A-AB02-2AD2B96F56F0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{82DB0D27-5251-4C6F-92EE-48E5A22DAB9F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleConsole", "samples\SimpleConsole\SimpleConsole.csproj", "{BA14A4EB-CA9B-4A93-96A4-FD6ED58F2482}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleWebApplication", "samples\SimpleWebApplication\SimpleWebApplication.csproj", "{4BFE060E-7BFA-4727-8DAA-92DAC718AD95}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{EBF0DEF4-DC58-4A2B-8AE8-C8DA91E00BB8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
