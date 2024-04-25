@@ -25,8 +25,14 @@ public static class MicrosoftDependencyInjection
 
         public ConfiguratorOptions WithNoCache()
         {
-            serviceCollection.AddScoped<IConfigurator, NoCacheConfigurator>();
+            RegisterConfigurator<NoCacheConfigurator>();
             return this;
+        }
+
+        // Find a way to hide this, and just allow FlipSwitch libraries
+        public void RegisterConfigurator<TConfig>() where TConfig : class, IConfigurator
+        {
+            serviceCollection.AddScoped<IConfigurator, TConfig>();
         }
     }
 }
