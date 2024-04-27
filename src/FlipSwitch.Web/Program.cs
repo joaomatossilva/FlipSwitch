@@ -3,7 +3,9 @@ using FlipSwitch.Web.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSqlServer<FlipDbContext>(builder.Configuration.GetConnectionString("flip"));
+builder.AddServiceDefaults();
+
+builder.AddSqlServerDbContext<FlipDbContext>("flip");
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -33,5 +35,7 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.MapConfigsApi();
+
+app.MapDefaultEndpoints();
 
 app.Run();

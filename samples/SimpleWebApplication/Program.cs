@@ -2,12 +2,14 @@ using FlipSwitch.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddServiceDefaults();
+
 // Add services to the container.
 builder.Services.AddRazorPages();
 
 builder.Services.AddConfigurator(opt => opt
     .WithNoCache()
-    .WithHttpBackend("http://localhost:5247"));
+    .WithHttpBackend("http://backend"));
 
 var app = builder.Build();
 
@@ -27,5 +29,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+app.MapDefaultEndpoints();
 
 app.Run();

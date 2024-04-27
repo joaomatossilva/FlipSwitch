@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsAspireHost>true</IsAspireHost>
+    <UserSecretsId>a4ae1c73-4182-40c2-ade7-ff1f94c7f170</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.0.0-preview.6.24214.1" />
+    <PackageReference Include="Aspire.Hosting.SqlServer" Version="8.0.0-preview.6.24214.1" />
+    <PackageReference Include="Aspire.Microsoft.Data.SqlClient" Version="8.0.0-preview.6.24214.1" />
+    <PackageReference Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0-preview.6.24214.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\samples\SimpleConsole\SimpleConsole.csproj" />
+    <ProjectReference Include="..\samples\SimpleWebApplication\SimpleWebApplication.csproj" />
+    <ProjectReference Include="..\src\FlipSwitch.Web\FlipSwitch.Web.csproj" />
+  </ItemGroup>
+
+</Project>
