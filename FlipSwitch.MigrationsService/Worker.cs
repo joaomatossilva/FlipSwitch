@@ -6,8 +6,14 @@ using System.Threading;
 
 namespace FlipSwitch.MigrationsService;
 
+using System.Diagnostics;
+using OpenTelemetry.Trace;
+
 public class Worker : BackgroundService
 {
+    public const string ActivitySourceName = "Migrations";
+    private static readonly ActivitySource activitySource = new(ActivitySourceName);
+
     private readonly IServiceProvider serviceProvider;
     private readonly IHostApplicationLifetime hostApplicationLifetime;
 
@@ -19,11 +25,28 @@ public class Worker : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken cancellationToken)
     {
-        using var scope = serviceProvider.CreateScope();
-        var dbContext = scope.ServiceProvider.GetRequiredService<FlipDbContext>();
+        do
+        {
+            using var activity = activitySource.StartActivity("Migrating database", ActivityKind.Client);
 
-        await EnsureDatabaseAsync(dbContext, cancellationToken);
-        await RunMigrationAsync(dbContext, cancellationToken);
+            try
+            {
+
+                using var scope = serviceProvider.CreateScope();
+                var dbContext = scope.ServiceProvider.GetRequiredService<FlipDbContext>();
+
+                await EnsureDatabaseAsync(dbContext, cancellationToken);
+                await RunMigrationAsync(dbContext, cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                await Task.Delay(500, cancellationToken);
+                activity?.RecordException(ex);
+                continue;
+            }
+
+            break;
+        } while (true);
 
         hostApplicationLifetime.StopApplication();
     }
