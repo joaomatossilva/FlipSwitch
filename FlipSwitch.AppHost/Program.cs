@@ -1,18 +1,20 @@
 using Projects;
-using Microsoft.Extensions.Hosting;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
-var sqlServer = builder.AddSqlServer("sql")
-    .AddDatabase("flip");
+var flip = builder.AddSqlServer("sql1").AddDatabase("flip");
+
 //var sqlServer = builder.add<Flip>("sql");
 
 var backend = builder.AddProject<FlipSwitch_Web>("backend")
-    .WithReference(sqlServer);
+    .WithReference(flip);
 
 // builder.AddProject<SimpleConsole>("console")
 //     .WithReference(backend);
 builder.AddProject<SimpleWebApplication>("web")
     .WithReference(backend);
+
+builder.AddProject<FlipSwitch_MigrationsService>("migrationsservice")
+    .WithReference(flip);
 
 builder.Build().Run();

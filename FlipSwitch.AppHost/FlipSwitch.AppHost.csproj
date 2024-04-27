@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FlipSwitch.MigrationsService\FlipSwitch.MigrationsService.csproj" />
     <ProjectReference Include="..\samples\SimpleConsole\SimpleConsole.csproj" />
     <ProjectReference Include="..\samples\SimpleWebApplication\SimpleWebApplication.csproj" />
     <ProjectReference Include="..\src\FlipSwitch.Web\FlipSwitch.Web.csproj" />

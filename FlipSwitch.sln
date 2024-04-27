@@ -1,29 +1,34 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlipSwitch", "src\FlipSwitch\FlipSwitch.csproj", "{7162EAB2-0AA2-4908-9E3E-9C4977C0202D}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34818.151
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlipSwitch", "src\FlipSwitch\FlipSwitch.csproj", "{7162EAB2-0AA2-4908-9E3E-9C4977C0202D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlipSwitch.Web", "src\FlipSwitch.Web\FlipSwitch.Web.csproj", "{0C63EE1F-B693-4713-8F61-52F3D3B80745}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlipSwitch.Web", "src\FlipSwitch.Web\FlipSwitch.Web.csproj", "{0C63EE1F-B693-4713-8F61-52F3D3B80745}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlipSwitch.Common", "src\FlipSwitch.Common\FlipSwitch.Common.csproj", "{8831267D-0C7B-4E7A-AB02-2AD2B96F56F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlipSwitch.Common", "src\FlipSwitch.Common\FlipSwitch.Common.csproj", "{8831267D-0C7B-4E7A-AB02-2AD2B96F56F0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{82DB0D27-5251-4C6F-92EE-48E5A22DAB9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleConsole", "samples\SimpleConsole\SimpleConsole.csproj", "{BA14A4EB-CA9B-4A93-96A4-FD6ED58F2482}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleConsole", "samples\SimpleConsole\SimpleConsole.csproj", "{BA14A4EB-CA9B-4A93-96A4-FD6ED58F2482}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleWebApplication", "samples\SimpleWebApplication\SimpleWebApplication.csproj", "{4BFE060E-7BFA-4727-8DAA-92DAC718AD95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleWebApplication", "samples\SimpleWebApplication\SimpleWebApplication.csproj", "{4BFE060E-7BFA-4727-8DAA-92DAC718AD95}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{EBF0DEF4-DC58-4A2B-8AE8-C8DA91E00BB8}"
-				ProjectSection(SolutionItems) = preProject
+	ProjectSection(SolutionItems) = preProject
 		docker-compose.yaml = docker-compose.yaml
 		Makefile = Makefile
 		README.md = README.md
-				EndProjectSection
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlipSwitch.Memory", "FlipSwitch.Memory\FlipSwitch.Memory.csproj", "{E34B3C19-CADA-4868-8D0B-4B504E40787F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlipSwitch.Memory", "FlipSwitch.Memory\FlipSwitch.Memory.csproj", "{E34B3C19-CADA-4868-8D0B-4B504E40787F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlipSwitch.AppHost", "FlipSwitch.AppHost\FlipSwitch.AppHost.csproj", "{CC219F1E-8A63-44F5-B6D2-FE193169151C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlipSwitch.AppHost", "FlipSwitch.AppHost\FlipSwitch.AppHost.csproj", "{CC219F1E-8A63-44F5-B6D2-FE193169151C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlipSwitch.ServiceDefaults", "FlipSwitch.ServiceDefaults\FlipSwitch.ServiceDefaults.csproj", "{327AB99B-60E5-46A2-97BE-3203C2780308}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlipSwitch.ServiceDefaults", "FlipSwitch.ServiceDefaults\FlipSwitch.ServiceDefaults.csproj", "{327AB99B-60E5-46A2-97BE-3203C2780308}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlipSwitch.MigrationsService", "FlipSwitch.MigrationsService\FlipSwitch.MigrationsService.csproj", "{4D5D0C34-B4EA-4BE9-943B-11C501F9A072}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +68,13 @@ Global
 		{327AB99B-60E5-46A2-97BE-3203C2780308}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{327AB99B-60E5-46A2-97BE-3203C2780308}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{327AB99B-60E5-46A2-97BE-3203C2780308}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D5D0C34-B4EA-4BE9-943B-11C501F9A072}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D5D0C34-B4EA-4BE9-943B-11C501F9A072}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D5D0C34-B4EA-4BE9-943B-11C501F9A072}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D5D0C34-B4EA-4BE9-943B-11C501F9A072}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BA14A4EB-CA9B-4A93-96A4-FD6ED58F2482} = {82DB0D27-5251-4C6F-92EE-48E5A22DAB9F}

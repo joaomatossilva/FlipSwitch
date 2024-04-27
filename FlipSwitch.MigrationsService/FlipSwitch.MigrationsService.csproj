@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-FlipSwitch.MigrationsService-4973a138-7fc4-4d83-b71b-6b235206c5ae</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0-preview.6.24214.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FlipSwitch.ServiceDefaults\FlipSwitch.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\src\FlipSwitch.Web\FlipSwitch.Web.csproj" />
+  </ItemGroup>
+</Project>
