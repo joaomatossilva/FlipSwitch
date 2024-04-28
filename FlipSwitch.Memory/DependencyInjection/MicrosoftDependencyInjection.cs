@@ -6,6 +6,7 @@ public static class MicrosoftDependencyInjection
     public static ConfiguratorOptions WithCache(this ConfiguratorOptions options)
     {
         options.RegisterConfigurator<MemoryCachedConfigurator>();
+        options.RegisterUpdatable<MemoryCachedConfigurator>();
         return options;
     }
 }

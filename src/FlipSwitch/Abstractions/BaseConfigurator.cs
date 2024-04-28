@@ -10,6 +10,11 @@ public abstract class BaseConfigurator(IBackend backend)
 
         ct.ThrowIfCancellationRequested();
 
+        return ToBoolean(config);
+    }
+
+    protected bool ToBoolean(Config config)
+    {
         if (config.Type != ConfigType.Toggle)
         {
             throw new Exception("Unsupported config type");

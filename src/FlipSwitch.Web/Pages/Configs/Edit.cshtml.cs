@@ -2,10 +2,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using FlipSwitch.Web.Data;
+using ConfigDto = FlipSwitch.Common.Config;
 
 namespace FlipSwitch.Web.Pages.Configs
 {
-    public class EditModel(FlipDbContext context) : PageModel
+    using Updater;
+
+    public class EditModel(FlipDbContext context, HubUpdater updater) : PageModel
     {
         [BindProperty]
         public EditViewModel Config { get; set; } = default!;
@@ -65,6 +68,17 @@ namespace FlipSwitch.Web.Pages.Configs
                     throw;
                 }
             }
+
+            //Needs to be a mapping. Duplicated from ConfigsEndpoint class
+            var dto = new ConfigDto
+            {
+                Name = config.Name,
+                Id = config.Id,
+                Type = (Common.ConfigType)config.Type,
+                Value = config.Value,
+                Version = config.Version
+            };
+            await updater.SendConfigUpdate(dto);
 
             return RedirectToPage("./Index");
         }

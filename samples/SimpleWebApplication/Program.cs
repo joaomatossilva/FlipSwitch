@@ -1,5 +1,7 @@
 using FlipSwitch.DependencyInjection;
 using FlipSwitch.Memory.DependencyInjection;
+using FlipSwitch.SignalR;
+using SimpleWebApplication;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +11,12 @@ builder.AddServiceDefaults();
 builder.Services.AddRazorPages();
 
 builder.Services.AddConfigurator(opt => opt
+    .WithOptions()
     .WithCache()
     .WithHttpBackend("http://backend"));
+
+builder.Services.AddSingleton<ConnectionManager>();
+builder.Services.AddHostedService<ConfigUpdateService>();
 
 var app = builder.Build();
 

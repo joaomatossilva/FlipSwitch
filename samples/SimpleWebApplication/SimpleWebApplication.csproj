@@ -9,6 +9,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\FlipSwitch.Memory\FlipSwitch.Memory.csproj" />
       <ProjectReference Include="..\..\FlipSwitch.ServiceDefaults\FlipSwitch.ServiceDefaults.csproj" />
+      <ProjectReference Include="..\..\FlipSwitch.SignalR\FlipSwitch.SignalR.csproj" />
       <ProjectReference Include="..\..\src\FlipSwitch\FlipSwitch.csproj" />
     </ItemGroup>
 </Project>

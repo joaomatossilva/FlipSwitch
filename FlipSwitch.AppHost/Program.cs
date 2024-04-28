@@ -17,6 +17,7 @@ var backend = builder.AddProject<FlipSwitch_Web>("backend")
 //     .WithReference(backend);
 
 builder.AddProject<SimpleWebApplication>("web")
+    //.WithEnvironment("FlipSwitch__Backend__Url", backend.GetEndpoint("backend"))
     .WithReference(backend);
 
 builder.AddProject<FlipSwitch_MigrationsService>("migrationsservice")

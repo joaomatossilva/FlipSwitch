@@ -30,6 +30,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlipSwitch.ServiceDefaults"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlipSwitch.MigrationsService", "FlipSwitch.MigrationsService\FlipSwitch.MigrationsService.csproj", "{4D5D0C34-B4EA-4BE9-943B-11C501F9A072}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aspire", "Aspire", "{F6E7BDAA-9E64-4FB6-AC3C-7DB388D5C2DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlipSwitch.SignalR", "FlipSwitch.SignalR\FlipSwitch.SignalR.csproj", "{488D68EC-790B-4376-988A-8EAE29F15807}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,6 +76,10 @@ Global
 		{4D5D0C34-B4EA-4BE9-943B-11C501F9A072}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D5D0C34-B4EA-4BE9-943B-11C501F9A072}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D5D0C34-B4EA-4BE9-943B-11C501F9A072}.Release|Any CPU.Build.0 = Release|Any CPU
+		{488D68EC-790B-4376-988A-8EAE29F15807}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{488D68EC-790B-4376-988A-8EAE29F15807}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{488D68EC-790B-4376-988A-8EAE29F15807}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{488D68EC-790B-4376-988A-8EAE29F15807}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,5 +87,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{BA14A4EB-CA9B-4A93-96A4-FD6ED58F2482} = {82DB0D27-5251-4C6F-92EE-48E5A22DAB9F}
 		{4BFE060E-7BFA-4727-8DAA-92DAC718AD95} = {82DB0D27-5251-4C6F-92EE-48E5A22DAB9F}
+		{CC219F1E-8A63-44F5-B6D2-FE193169151C} = {F6E7BDAA-9E64-4FB6-AC3C-7DB388D5C2DA}
+		{327AB99B-60E5-46A2-97BE-3203C2780308} = {F6E7BDAA-9E64-4FB6-AC3C-7DB388D5C2DA}
+		{4D5D0C34-B4EA-4BE9-943B-11C501F9A072} = {F6E7BDAA-9E64-4FB6-AC3C-7DB388D5C2DA}
 	EndGlobalSection
 EndGlobal

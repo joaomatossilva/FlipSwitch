@@ -1,11 +1,14 @@
 using FlipSwitch.Web.Api;
 using FlipSwitch.Web.Data;
+using FlipSwitch.Web.Updater;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
 builder.AddSqlServerDbContext<FlipDbContext>("flip");
+builder.Services.AddScoped<HubUpdater>();
+builder.Services.AddSignalR();
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -35,6 +38,7 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.MapConfigsApi();
+app.MapHub<UpdatesHub>("updates"); //should be configurable
 
 app.MapDefaultEndpoints();
 
