@@ -29,7 +29,7 @@ namespace FlipSwitch.Web.Pages.Configs
             {
                 Id = config.Id,
                 Name = config.Name,
-                Value = bool.Parse(config.Value)
+                Value = config.Value
             };
             return Page();
         }
@@ -49,7 +49,7 @@ namespace FlipSwitch.Web.Pages.Configs
                 return NotFound();
             }
 
-            config.Value = this.Config.Value.ToString();
+            config.Value = this.Config.Value;
             config.LastUpdated = DateTimeOffset.UtcNow;
             config.Version = Guid.NewGuid().ToString();
 
@@ -92,7 +92,7 @@ namespace FlipSwitch.Web.Pages.Configs
         {
             public string Id { get; set; }
             public string? Name { get; set; }
-            public bool Value { get; set; }
+            public string Value { get; set; }
         }
     }
 }

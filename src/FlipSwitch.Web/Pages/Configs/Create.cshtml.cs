@@ -29,7 +29,7 @@ namespace FlipSwitch.Web.Pages.Configs
             context.Configs.Add(new Config
             {
                 Id = Guid.NewGuid().ToString(),
-                Value = this.Config.Value.ToString(),
+                Value = this.Config.Value,
                 Name = this.Config.Name,
                 Created = DateTimeOffset.UtcNow,
                 LastUpdated = DateTimeOffset.UtcNow,
@@ -43,7 +43,7 @@ namespace FlipSwitch.Web.Pages.Configs
         public class CreateViewModel
         {
             public string Name { get; set; }
-            public bool Value { get; set; }
+            public string Value { get; set; }
         }
     }
 }

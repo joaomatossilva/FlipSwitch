@@ -11,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
+        <form method="post" onsubmit="readJson()">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Config.Id" />
             <div class="form-group">
@@ -19,9 +19,8 @@
                 @Html.DisplayFor(model => model.Config.Name)
             </div>
             <div class="form-group">
-                <label asp-for="Config.Value" class="form-check-label"></label>
-                @Html.CheckBoxFor(x => x.Config.Value, new { @class = "form-check-input"})
-                <span asp-validation-for="Config.Value" class="text-danger"></span>
+                <div id="jsoneditor" style="width: 400px; height: 400px;"></div>
+                <input type="hidden" asp-for="Config.Value" id="jsonValue"/>
             </div>
 
             <div class="form-group">
@@ -35,3 +34,29 @@
     <a asp-page="./Index">Back to List</a>
 </div>
 
+@section Scripts
+{
+    <script>
+        // create the editor
+        const container = document.getElementById("jsoneditor")
+        const options = {
+            mode: 'text',
+            navigationBar: false,
+            
+        }
+        const editor = new JSONEditor(container, options)
+
+        // set json
+        const jsonValue = document.getElementById("jsonValue");
+        const json = JSON.parse(jsonValue.value);
+        editor.set(json);
+        
+        function readJson() {
+            const jsonValue = document.getElementById("jsonValue")
+            const json = editor.getText();
+            console.log(json);
+            jsonValue.value = json;
+            return true;
+        }
+    </script>
+}

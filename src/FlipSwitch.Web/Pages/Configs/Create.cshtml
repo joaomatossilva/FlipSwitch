@@ -11,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
+        <form method="post" onsubmit="readJson()">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Config.Name" class="control-label"></label>
@@ -19,9 +19,8 @@
                 <span asp-validation-for="Config.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Config.Value" class="form-check-label"></label>
-                @Html.CheckBoxFor(x => x.Config.Value, new { @class = "form-check-input"})
-                <span asp-validation-for="Config.Value" class="text-danger"></span>
+                <div id="jsoneditor" style="width: 400px; height: 400px;"></div>
+                <input type="hidden" asp-for="Config.Value" id="jsonValue"/>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -34,3 +33,38 @@
     <a asp-page="Index">Back to List</a>
 </div>
 
+@section Scripts
+{
+    <script>
+        // create the editor
+        const container = document.getElementById("jsoneditor")
+        const options = {
+            mode: 'text',
+            navigationBar: false,
+            
+        }
+        const editor = new JSONEditor(container, options)
+
+        // set json
+        const initialJson = {
+            "Array": [1, 2, 3],
+            "Boolean": true,
+            "Null": null,
+            "Number": 123,
+            "Object": {"a": "b", "c": "d"},
+            "String": "Hello World"
+        }
+        editor.set(initialJson)
+
+        // get json
+        const updatedJson = editor.get()
+        
+        function readJson() {
+            const jsonValue = document.getElementById("jsonValue")
+            const json = editor.getText();
+            console.log(json);
+            jsonValue.value = json;
+            return true;
+        }
+    </script>
+}
