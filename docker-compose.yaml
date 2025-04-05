@@ -1,11 +1,22 @@
 version: "3.4"
 
 services:
-  sqlserver:
-    image: mcr.microsoft.com/mssql/server:2022-latest
+  db:
+    image: postgres
+    restart: always
+    # set shared memory limit when using docker-compose
+    shm_size: 128mb
+    # or set shared memory limit when deploy via swarm stack
+    #volumes:
+    #  - type: tmpfs
+    #    target: /dev/shm
+    #    tmpfs:
+    #      size: 134217728 # 128*2^20 bytes = 128Mb
     environment:
-      SA_PASSWORD: "FlipSwitch123!"
-      ACCEPT_EULA: "Y"
-      MSSQL_PID: "Developer"
+      POSTGRES_PASSWORD: FlipSwitch123!
+    
+  adminer:
+    image: adminer
+    restart: always
     ports:
-      - "1433:1433"
+      - 8080:8080

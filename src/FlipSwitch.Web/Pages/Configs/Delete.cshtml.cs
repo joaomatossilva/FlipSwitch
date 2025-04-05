@@ -1,34 +1,19 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using FlipSwitch.Web.Data;
+using FlipSwitch.Web.Data.Config;
+using Marten;
 
 namespace FlipSwitch.Web.Pages.Configs
 {
-    public class DeleteModel : PageModel
+    public class DeleteModel(IDocumentStore store) : PageModel
     {
-        private readonly FlipSwitch.Web.Data.FlipDbContext _context;
-
-        public DeleteModel(FlipSwitch.Web.Data.FlipDbContext context)
-        {
-            _context = context;
-        }
-
         [BindProperty]
         public Config Config { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(Guid id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var config = await _context.Configs.FirstOrDefaultAsync(m => m.Id == id);
+            var session = store.LightweightSession();
+            var config = await session.LoadAsync<Config>(id);
 
             if (config == null)
             {
@@ -41,21 +26,18 @@ namespace FlipSwitch.Web.Pages.Configs
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(string id)
+        public async Task<IActionResult> OnPostAsync(Guid id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-
-            var config = await _context.Configs.FindAsync(id);
-            if (config != null)
-            {
-                Config = config;
-                _context.Configs.Remove(Config);
-                await _context.SaveChangesAsync();
-            }
-
+        
+            var session = store.LightweightSession();
+            session.Events.ArchiveStream(id);
+            session.Delete<Config>(id);
+            await session.SaveChangesAsync();
+            
             return RedirectToPage("./Index");
         }
     }

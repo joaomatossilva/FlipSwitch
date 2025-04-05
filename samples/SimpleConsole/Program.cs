@@ -7,7 +7,7 @@ Console.WriteLine("Press Any Key to Exit");
 
 do
 {
-    var enabled = await configurator.IsFeatureEnabled("Teste");
+    var enabled = await configurator.IsFeatureEnabled<MyConfig>("Teste", c => c.IsActive);
     Console.WriteLine($"Teste is {enabled}");
     await Task.Delay(1000);
 } while (!Console.KeyAvailable);
@@ -23,4 +23,9 @@ static IConfigurator GetConfigurator()
     var backend = new HttpServerBackend(httpClient);
 
     return new NoCacheConfigurator(backend);
+}
+
+class MyConfig 
+{
+    public bool IsActive { get; set; }
 }

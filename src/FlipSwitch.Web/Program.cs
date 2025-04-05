@@ -1,12 +1,27 @@
 using FlipSwitch.Web.Api;
 using FlipSwitch.Web.Data;
+using FlipSwitch.Web.Data.Config;
 using FlipSwitch.Web.Updater;
+using Marten;
+using Marten.Events.Projections;
+using Weasel.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
-builder.AddSqlServerDbContext<FlipDbContext>("flip");
+builder.AddNpgsqlDataSource("pg");
+
+builder.Services.AddMarten(cfg =>
+    {
+        cfg.UseSystemTextJsonForSerialization();
+        
+        cfg.Projections.Add<ConfigProjection>(ProjectionLifecycle.Inline);
+
+        cfg.AutoCreateSchemaObjects = AutoCreate.All;
+    })
+    .UseNpgsqlDataSource();
+
 builder.Services.AddScoped<HubUpdater>();
 builder.Services.AddSignalR();
 

@@ -6,25 +6,25 @@ using Microsoft.Extensions.Caching.Memory;
 
 public class MemoryCachedConfigurator(IMemoryCache memoryCache, IBackend backend) : BaseConfigurator(backend), IConfigurator, IUpdatable
 {
-    public new async Task<bool> IsFeatureEnabled(string name, CancellationToken ct = default)
+    public async Task<T> GetConfig<T>(string name, CancellationToken ct = default) where T : notnull
     {
-        if (memoryCache.TryGetValue(name, out bool isEnabled))
+
+        if (memoryCache.TryGetValue(name, out Config? config) && config is not null)
         {
-            return isEnabled;
+            return DeserializeValue<T>(config);
         }
 
-        isEnabled = await base.IsFeatureEnabled(name, ct);
+        config = await base.GetConfigEntry(name, ct);
 
         //TODO: Caching Options
-        memoryCache.Set(name, isEnabled);
+        memoryCache.Set(name, config);
 
-        return isEnabled;
+        return DeserializeValue<T>(config);
     }
 
     public Task Update(Config config)
     {
-        var isEnabled = ToBoolean(config);
-        memoryCache.Set(config.Name, isEnabled);
+        memoryCache.Set(config.Name, config);
         return Task.CompletedTask;
     }
 }

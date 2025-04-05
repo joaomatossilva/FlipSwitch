@@ -12,14 +12,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aspire.Hosting.AppHost" Version="9.0.0" />
-    <PackageReference Include="Aspire.Hosting.SqlServer" Version="9.0.0" />
-    <PackageReference Include="Aspire.Microsoft.Data.SqlClient" Version="9.0.0" />
-    <PackageReference Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="9.1.0" />
+    <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="9.1.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FlipSwitch.MigrationsService\FlipSwitch.MigrationsService.csproj" />
     <ProjectReference Include="..\samples\SimpleConsole\SimpleConsole.csproj" />
     <ProjectReference Include="..\samples\SimpleWebApplication\SimpleWebApplication.csproj" />
     <ProjectReference Include="..\src\FlipSwitch.Web\FlipSwitch.Web.csproj" />

@@ -1,21 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using FlipSwitch.Web.Data;
+using FlipSwitch.Web.Data.Config;
+using Marten;
 
 namespace FlipSwitch.Web.Pages.Configs
 {
     public class DetailsModel : PageModel
     {
-        private readonly FlipSwitch.Web.Data.FlipDbContext _context;
+        private readonly IQuerySession session;
 
-        public DetailsModel(FlipSwitch.Web.Data.FlipDbContext context)
+        public DetailsModel(IQuerySession session)
         {
-            _context = context;
+            this.session = session;
         }
 
         public Config Config { get; set; } = default!;
@@ -27,15 +23,13 @@ namespace FlipSwitch.Web.Pages.Configs
                 return NotFound();
             }
 
-            var config = await _context.Configs.FirstOrDefaultAsync(m => m.Id == id);
+            var config = await session.LoadAsync<Config>(id);
             if (config == null)
             {
                 return NotFound();
             }
-            else
-            {
-                Config = config;
-            }
+
+            Config = config;
             return Page();
         }
     }

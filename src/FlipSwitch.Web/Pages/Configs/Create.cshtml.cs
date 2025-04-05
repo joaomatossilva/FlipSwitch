@@ -1,15 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using FlipSwitch.Web.Data;
+using FlipSwitch.Web.Data.Config;
+using Marten;
 
 namespace FlipSwitch.Web.Pages.Configs
 {
-    public class CreateModel(FlipSwitch.Web.Data.FlipDbContext context) : PageModel
+    public class CreateModel(IDocumentStore documentStore) : PageModel
     {
         public IActionResult OnGet()
         {
@@ -26,16 +22,18 @@ namespace FlipSwitch.Web.Pages.Configs
                 return Page();
             }
 
-            context.Configs.Add(new Config
+            var session = documentStore.LightweightSession();
+            var created = new ConfigCreated
             {
-                Id = Guid.NewGuid().ToString(),
-                Value = this.Config.Value,
-                Name = this.Config.Name,
+                Id = Guid.NewGuid(),
+                Value = Config.Value,
+                Name = Config.Name,
                 Created = DateTimeOffset.UtcNow,
                 LastUpdated = DateTimeOffset.UtcNow,
                 Version = Guid.NewGuid().ToString()
-            });
-            await context.SaveChangesAsync();
+            };
+            session.Events.Append(created.Id, created);
+            await session.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

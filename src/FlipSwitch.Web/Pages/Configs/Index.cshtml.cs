@@ -4,25 +4,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 using FlipSwitch.Web.Data;
+using FlipSwitch.Web.Data.Config;
+using Marten;
 
 namespace FlipSwitch.Web.Pages.Configs
 {
     public class IndexModel : PageModel
     {
-        private readonly FlipSwitch.Web.Data.FlipDbContext _context;
+        private readonly IQuerySession querySession;
 
-        public IndexModel(FlipSwitch.Web.Data.FlipDbContext context)
+        public IndexModel(IQuerySession querySession)
         {
-            _context = context;
+            this.querySession = querySession;
         }
 
-        public IList<Config> Config { get;set; } = default!;
+        public IReadOnlyList<Config> Config { get;set; } = [];
 
         public async Task OnGetAsync()
         {
-            Config = await _context.Configs.ToListAsync();
+            Config = await querySession.Query<Config>().ToListAsync();
         }
     }
 }

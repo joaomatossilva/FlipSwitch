@@ -2,5 +2,5 @@ namespace FlipSwitch.Abstractions;
 
 public interface IConfigurator
 {
-    public Task<bool> IsFeatureEnabled(string name, CancellationToken ct = default);
+    public Task<T> GetConfig<T>(string name, CancellationToken ct = default) where T : notnull;
 }
