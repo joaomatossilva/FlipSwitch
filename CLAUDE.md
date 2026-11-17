@@ -6,8 +6,8 @@ An enhanced feature toggle / remote configuration system for .NET. Configs are m
 
 ## Tech stack
 
-- .NET 9 (`net9.0`), C# with nullable reference types and implicit usings enabled
-- .NET Aspire 9 for local orchestration (`FlipSwitch.AppHost`, `FlipSwitch.ServiceDefaults`)
+- .NET 10 (`net10.0`), C# with nullable reference types and implicit usings enabled
+- Aspire 13 for local orchestration (`FlipSwitch.AppHost`, `FlipSwitch.ServiceDefaults`)
 - Backend: ASP.NET Core Razor Pages + minimal API + SignalR hub
 - Storage: PostgreSQL through Marten (event store with an inline projection)
 - Client: plain class libraries, `Microsoft.Extensions.DependencyInjection`, `IMemoryCache`, SignalR client
