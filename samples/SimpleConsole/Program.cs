@@ -1,5 +1,6 @@
 ﻿using FlipSwitch;
 using FlipSwitch.Abstractions;
+using FlipSwitch.Extensions;
 
 var configurator = GetConfigurator();
 
