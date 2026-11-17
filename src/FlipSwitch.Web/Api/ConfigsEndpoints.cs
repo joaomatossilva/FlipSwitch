@@ -10,8 +10,7 @@ public static class ConfigsEndpoints
     public static WebApplication MapConfigsApi(this WebApplication app)
     {
         app.MapGet("/api/configs", HandleGet)
-            .WithName("GetConfigs")
-            .WithOpenApi();
+            .WithName("GetConfigs");
         return app;
     }
 
