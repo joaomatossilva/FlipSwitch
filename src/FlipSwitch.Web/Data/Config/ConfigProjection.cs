@@ -2,7 +2,7 @@ using Marten.Events.Aggregation;
 
 namespace FlipSwitch.Web.Data.Config;
 
-public class ConfigProjection : SingleStreamProjection<Config>
+public class ConfigProjection : SingleStreamProjection<Config, Guid>
 {
     public void Apply(ConfigCreated created, Config config)
     {

@@ -2,9 +2,9 @@ using FlipSwitch.Web.Api;
 using FlipSwitch.Web.Data;
 using FlipSwitch.Web.Data.Config;
 using FlipSwitch.Web.Updater;
+using JasperFx;
+using JasperFx.Events.Projections;
 using Marten;
-using Marten.Events.Projections;
-using Weasel.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
